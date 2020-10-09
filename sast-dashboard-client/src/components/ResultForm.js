@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Form, Col, Button, Container } from "react-bootstrap";
 import { toast } from "react-toastify";
 
-const baseUrl = "http://localhost:8000/";
+const baseUrl = process.env.REACT_APP_API_URL;
 
 const ResultForm = (props) => {
   const [errors, setErrors] = useState({});

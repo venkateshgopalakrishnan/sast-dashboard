@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ResultsList from "./ResultsList";
-const baseUrl = "http://localhost:8000/";
+const baseUrl = process.env.REACT_APP_API_URL;
 
 async function getResults() {
   const response = await fetch(baseUrl + "get-all-results/");
