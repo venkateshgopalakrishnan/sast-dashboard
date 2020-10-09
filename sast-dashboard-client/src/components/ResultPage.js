@@ -3,7 +3,7 @@ import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Card } from "semantic-ui-react";
 
-const baseUrl = process.env.REACT_APP_API_URL;
+const baseUrl = "https://sast-dashboard.herokuapp.com";
 
 async function getResultById(pk) {
   const response = await fetch(baseUrl + "/get-result/" + pk);

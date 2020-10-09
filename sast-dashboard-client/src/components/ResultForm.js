@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Form, Col, Button, Container } from "react-bootstrap";
 import { toast } from "react-toastify";
 
-const baseUrl = process.env.REACT_APP_API_URL;
+const baseUrl = "https://sast-dashboard.herokuapp.com";
 
 const ResultForm = (props) => {
   const [errors, setErrors] = useState({});

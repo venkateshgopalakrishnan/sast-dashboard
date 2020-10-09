@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ResultsList from "./ResultsList";
-const baseUrl = process.env.REACT_APP_API_URL;
+const baseUrl = "https://sast-dashboard.herokuapp.com";
 
 async function getResults() {
   const response = await fetch(baseUrl + "/get-all-results/");
