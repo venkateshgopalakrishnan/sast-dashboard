@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+// Component to render page not found
 const NotFoundPage = () => {
   return (
     <div>

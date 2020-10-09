@@ -15,8 +15,10 @@ function App() {
         <Switch>
           <Route exact path="/" component={Dashboard} />
           <Route path="/about" component={AboutPage} />
+          {/* URL Accepts the id of the result as a slug and returns the findings for that reuslt */}
           <Route path="/view/:pk" component={ResultPage} />
           <Route path="/add" component={ResultForm} />
+          {/* Not found page which will work on all URL patterns which don't match with the above paths */}
           <Route component={NotFoundPage} />
         </Switch>
       </Container>

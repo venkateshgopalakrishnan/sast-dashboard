@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 import { Form, Col, Button, Container } from "react-bootstrap";
 import { toast } from "react-toastify";
 
+// Hardcoding api url here since there was an issue with Heroku config vars when url was declared
+// To be changed to http://localhost:8000 when run locally
 const baseUrl = "https://sast-dashboard.herokuapp.com";
 
+// Component to render a form to add new scan results
 const ResultForm = (props) => {
   const [errors, setErrors] = useState({});
   const [result, setResult] = useState({
@@ -16,6 +19,8 @@ const ResultForm = (props) => {
     findings_box: 1,
   });
 
+  // Seperate change handler for findings because its an array of json objects
+  //  thats dynamic based on number of findings being added by user for a result
   const handleFindingsChange = ({ target }, index) => {
     const finding = result.findings[index];
     finding[target.name] = target.value;
@@ -29,10 +34,12 @@ const ResultForm = (props) => {
     setResult({ ...result, findings: newFindings });
   };
 
+  // Change handler for form fields
   const handleChange = ({ target }) => {
     setResult({ ...result, [target.name]: target.value });
   };
 
+  // Form validation to check if all mandaatory fields have been entered by user
   const formIsValid = () => {
     const _errors = {};
     if (!result.repo_name) _errors.repo_name = "Repo name is required";
@@ -44,13 +51,16 @@ const ResultForm = (props) => {
     return Object.keys(_errors).length === 0;
   };
 
+  // Submit handler for Form. Will post and redirect to dashboard
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!formIsValid()) return;
+    // constructing json object from state results
     const json = {
       repo_name: result.repo_name,
       status: result.status,
       status_time: result.date + " " + result.time,
+      // constructing findings object
       findings: result.findings.map((finding) => {
         return {
           ruleId: finding.rule_id,
@@ -72,11 +82,17 @@ const ResultForm = (props) => {
       const message = `An error has occured: ${response.status}`;
       throw new Error(message);
     } else {
+      // Redirecting to Dashboard on successful form submission
       props.history.push("/");
+      // To display a toast for about 3 seconds on the screen at the right top corner after redirect
+      // This doesn't work currently for no reason, should see why...
       toast.success("Course Saved");
     }
   };
 
+  // Function to return only the findings part of the form. This increases on button click.
+  // User is free to add as many findings as they want, if the status of the scan result being added is "Success" or "Failure"
+  // A feature not implemented is to have another button with which the findings boxes added can be deleted from the form
   const renderFindings = (i) => {
     return (
       <div>

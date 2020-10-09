@@ -1,6 +1,7 @@
 import React from "react";
 import { Jumbotron, Container } from "react-bootstrap";
 
+// About page component
 const AboutPage = () => {
   return (
     <Jumbotron fluid>

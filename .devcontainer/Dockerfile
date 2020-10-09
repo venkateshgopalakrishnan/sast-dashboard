@@ -27,5 +27,8 @@ RUN if [ "${INSTALL_NODE}" = "true" ]; then su vscode -c "source /usr/local/shar
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 #     && apt-get -y install --no-install-recommends <your-package-list-here>
 
-
-
+# Install all dependencies for the app
+RUN pip install -r requirements.txt
+# Migrate to propagate model changes to DB schema
+CMD ["python", "./manage.py", "migrate"]
+CMD ["python", "./manage.py", "runserver 0.0.0.0:8000"]

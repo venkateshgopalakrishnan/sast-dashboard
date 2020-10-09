@@ -2,8 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ResultsList from "./ResultsList";
+
+// Hardcoding api url here since there was an issue with Heroku config vars when url was declared
+// To be changed to http://localhost:8000 when run locally
 const baseUrl = "https://sast-dashboard.herokuapp.com";
 
+// Funtion to get all the results from API and return the object
 async function getResults() {
   const response = await fetch(baseUrl + "/get-all-results/");
   if (!response.ok) {
@@ -13,9 +17,10 @@ async function getResults() {
   const results = await response.json();
   return results;
 }
-
+// Dashboard component (parent component that calls child ResultList component)
 function Dashboard() {
   const [results, setResults] = useState([]);
+  // lifecycle method to get all results from api on component render
   useEffect(() => {
     let isMounted = true;
     getResults()
