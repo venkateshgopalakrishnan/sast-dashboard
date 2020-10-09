@@ -66,7 +66,7 @@ const ResultForm = (props) => {
       method: "POST",
       body: JSON.stringify(json),
     };
-    const response = await fetch(baseUrl + "add-result/", requestOptions);
+    const response = await fetch(baseUrl + "/add-result/", requestOptions);
 
     if (!response.ok) {
       const message = `An error has occured: ${response.status}`;

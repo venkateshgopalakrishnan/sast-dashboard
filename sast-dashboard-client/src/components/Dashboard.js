@@ -5,7 +5,7 @@ import ResultsList from "./ResultsList";
 const baseUrl = process.env.REACT_APP_API_URL;
 
 async function getResults() {
-  const response = await fetch(baseUrl + "get-all-results/");
+  const response = await fetch(baseUrl + "/get-all-results/");
   if (!response.ok) {
     const message = `An error has occured: ${response.status}`;
     throw new Error(message);

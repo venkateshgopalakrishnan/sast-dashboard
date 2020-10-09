@@ -6,7 +6,7 @@ import { Card } from "semantic-ui-react";
 const baseUrl = process.env.REACT_APP_API_URL;
 
 async function getResultById(pk) {
-  const response = await fetch(baseUrl + "get-result/" + pk);
+  const response = await fetch(baseUrl + "/get-result/" + pk);
   if (!response.ok) {
     const message = `An error has occured: ${response.status}`;
     throw new Error(message);
