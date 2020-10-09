@@ -1,0 +1,1 @@
+web: gunicorn sastdashboard.sastdashboard.wsgi --log-file - --log-level debug

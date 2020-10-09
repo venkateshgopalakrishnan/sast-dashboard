@@ -1,0 +1,8 @@
+Django
+django-cors-headers
+python-decouple
+jsonfield
+psycopg2
+dj-database-url
+gunicorn
+whitenoise
